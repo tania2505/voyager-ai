@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Voyager – Travel Coordination Agent</title>
+<link rel="stylesheet" href="styles.css"></head><body>
+<button id="ham" aria-label="Open menu">☰</button><div id="ov"></div>
+<div class="app"><aside><div class="brand">✈️<span class="lb"> Voyager</span></div><nav>
+<button class="nv on" data-v="planner" title="Trip planner"><span class="ic">🧭</span><span class="lb">Trip planner</span></button><button class="nv" data-v="state" title="Agent state"><span class="ic">🗂</span><span class="lb">Agent state</span></button><button class="nv" data-v="tools" title="Tool registry"><span class="ic">🛠</span><span class="lb">Tool registry</span></button><button class="nv" data-v="how" title="How it works"><span class="ic">📖</span><span class="lb">How it works</span></button></nav><div class="foot">Simulated tools · demo</div></aside>
+<div class="content"><header><h1>✈️ Voyager <span style="font-weight:400;color:var(--mut)">– autonomous travel coordination agent</span></h1>
+<p>Chat with the agent. It extracts your trip details, asks for what is missing, calls its tools, and books only after you confirm. All tools are simulated.</p></header>
+<div class="view on" id="v-planner"><div class="chatwrap">
+<section class="card chatmain"><div class="chathead"><div><b>Voyager</b> <span class="sub">AI travel agent</span></div>
+<div class="chctl"><select id="mode"><option value="rules">Rule-based</option><option value="llm">Claude tool-use</option></select><button class="sec" id="newtrip">New trip</button></div></div>
+<div id="msgs"></div><div class="chips" id="chips"></div>
+<div class="composer"><input id="msg" placeholder="Describe your trip..." autocomplete="off"><button id="send">Send</button></div></section>
+<div class="card draftp"><h2>Trip details</h2><div id="draft"></div></div>
+</div></div>
+<div class="view" id="v-state"><main style="grid-template-columns:1fr"><section class="card"><h2>Agent state (live)</h2><pre id="state">{}</pre></section></main></div>
+<div class="view" id="v-tools"><main style="grid-template-columns:1fr"><section class="card"><h2>Tool registry</h2><div class="tl" id="tl"></div></section></main></div>
+<div class="view" id="v-how"><main style="grid-template-columns:1fr"><section class="card"><h2>How the agent works</h2><ol class="list"><li><b>Validate:</b> checks the request and lists any missing information before spending tool calls.</li><li><b>Search:</b> calls flight, hotel and transport tools, passing travelers, dates and area as arguments.</li><li><b>Filter &amp; compare:</b> applies hard constraints (nonstop, star rating), then scores every combination against the budget.</li><li><b>Decide:</b> picks the best fit, or reports the cheapest option and how far over budget it is.</li><li><b>Itinerary:</b> builds a day-by-day plan from your interests.</li><li><b>Hold &amp; confirm:</b> creates a booking hold and waits. Booking only executes after you confirm.</li></ol></section></main></div>
+</div></div>
+<script src="app.js"></script>
+</body></html>
